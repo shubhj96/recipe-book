@@ -1,0 +1,46 @@
+<h2 class="page-head">Recipe book</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <ul class="list-group">
+        <button type="button" class="list-group-item list-group-item-action" *ngFor="let data of foodData"
+          (click)="selectItem(data)">
+          {{data.name}}
+        </button>
+      </ul>
+    </div>
+    <div class="col-8">
+      <div class="card" style="width: 45rem;" *ngIf="selectedData.name">
+        <img class="card-img-top" src="{{selectedData.imageURL}}" alt="{{selectedData.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{selectedData.name}}</h5>
+          <div class="card-text">
+            <h6>Ingredients</h6>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-action" *ngFor="let ingredient of selectedData.ingredients">
+                <div class="row">
+                  <div class="col">{{ingredient.name}} </div>
+                  <div class="col">{{ingredient.quantity}}</div>
+                  <div class="col">
+                    <button type="button" class="btn btn-primary add-cart-btn" (click)="addToCart(ingredient)">
+                      Add to cart
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-text recipe-card">
+            <h6>Recipe</h6>
+            <ul class="list-group">
+              <li class="" *ngFor="let recipeStep of selectedData.steps">
+                {{recipeStep}}
+              </li>
+            </ul>
+          </div>
+          <button class="btn btn-primary cart-btn" (click)="navigateToCart()">Go to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

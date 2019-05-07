@@ -1,0 +1,25 @@
+<h2 class="page-head"> Cart</h2>
+<div class="container">
+  <div class="row btn-row" *ngIf="(cartList)?.length!=0">
+    <div class="col">
+      <button class="btn btn-primary delete-cart-btn" (click)="clearCart()"> Clear Cart</button>
+    </div>
+  </div>
+  <ul class="list-group" *ngIf="(cartList)?.length!=0">
+    <li class="list-group-item list-group-item-action" *ngFor="let item of cartList; let i = index;">
+      <div class="row">
+        <div class="col">{{item.name}} </div>
+        <div class="col">{{item.requiredQty}}</div>
+        <div class="col">
+          <button type="button" class="btn btn-primary delete-cart-btn" (click)="removeItem(i)">
+            Delete Item
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="no-item" *ngIf="(cartList)?.length==0">
+    <h5>There is no Item in the list!</h5>
+    <button class="btn btn-primary" (click)="navigateToRecipe()"> Recipe book</button>
+  </div>
+</div>
