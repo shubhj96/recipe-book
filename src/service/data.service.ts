@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, ADD_CART, UPDATE_CART, REMOVE_CART, REMOVE_ALL_CARTS } from 'src/app/store';
+import { Ingredient } from 'src/app/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,8 @@ export class DataService {
    * This method is used to remove the item at the selected index from the list
    * @param index : selected Index
    */
-  public removeItem(index) {
-    this.ngRedux.dispatch({type: REMOVE_CART, name: this.cartItem[index].name });
+  public removeItem(item : Ingredient) {
+    this.ngRedux.dispatch({type: REMOVE_CART, name: item.name });
   }
 
   /**

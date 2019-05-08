@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../../service/data.service";
 import { Router } from '@angular/router';
+import { Ingredient } from '../cart';
 
 @Component({
   selector: 'app-cart',
@@ -28,8 +29,8 @@ export class CartComponent implements OnInit {
    * This method is used to remove the selected index from the list
    * @param index : selected index to be removed
    */
-  removeItem(index: number) {
-    this.dataService.removeItem(index);
+  removeItem(item: Ingredient) {
+    this.dataService.removeItem(item);
     this.getCartItem();
   }
 
